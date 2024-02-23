@@ -1,16 +1,20 @@
 import React from "react";
 
-export const Button = (props: unknown) => {
-  return <button className={props.className}></button>;
+interface IProps {
+  className: string,
+  children: React.ReactNode
+}
+
+export const Button: React.FC<IProps> = ({className, children}: IProps) => {
+  return <button className={className}>{children}</button>;
 };
 
-const Parent = () => {
+const Parent: React.FC = () => {
   return (
     <>
-      {/* @ts-expect-error */}
-      <Button></Button>
+      <Button className={'my-class'}>Any another text</Button>
 
-      <Button className="my-class"></Button>
+      <Button className="my-class">Any text</Button>
     </>
   );
 };
